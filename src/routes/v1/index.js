@@ -15,7 +15,6 @@ router
   })
   .delete("/:id", (req, res, next) => {
     const id = req.params.id;
-    console.log(typeof id);
     deleteImageUrl(id).then((result) => res.status(204).end());
   });
 
