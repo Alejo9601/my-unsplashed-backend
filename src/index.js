@@ -7,7 +7,8 @@ require("./database").connectDB();
 const app = express();
 app.use(express.json());
 app.use(cors());
-app.use("/api/v1", v1Router);
+app.use("/api/v1", v1Router.imagesRoutes);
+app.use("/api/v1/user", v1Router.userRoutes);
 
 const PORT = process.env.PORT || 3001;
 
