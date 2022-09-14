@@ -1,11 +1,15 @@
 const User = require("../models/user");
+const { areEmptyFields } = require("../utils/areEmptyFields");
 
-const createUser = (username, password) => {
+const createUser = async (username, password) => {
   const newUser = new User({
     username: username,
     password: password,
   });
-  return newUser.save();
+
+  return areEmptyFields(username, password)
+    ? { error: "Fields should not be empty" }
+    : newUser.save();
 };
 
 module.exports = { createUser };
