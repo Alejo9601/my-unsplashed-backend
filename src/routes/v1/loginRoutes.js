@@ -5,7 +5,7 @@ const loginRoutes = express.Router();
 loginRoutes.post("/", (req, res, next) => {
   const user = req.body;
   validateUser(user.username, user.password).then((result) =>
-    res.send(result).end()
+    result ? res.send(result).end() : res.status(401).end()
   );
 });
 
